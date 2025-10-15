@@ -1,0 +1,60 @@
+{
+    "projects": {
+        "showoff": [
+            {
+                "title": "OPCRM",
+                "description": "A lightweight, on-premise CRM system designed for small businesses, offering maximum security and full control by running directly on the company's own server.",
+                "github": "https://github.com",
+                "skills": [
+                    "Java",
+                    "SpringBoot",
+                    "MySQL",
+                    "PostgreSQL",
+                    "Bcrypt",
+                    "JJWT"
+                ]
+            },
+            {
+                "title": "PiDash",
+                "description": "A dashboard for my custom Raspberry Pi NAS server, providing a clear overview of system status, storage usage, and running services.",
+                "github": "https://github.com",
+                "skills": [
+                    "React",
+                    "JavaScript",
+                    "CSS",
+                    "Express",
+                    "ReactQuery",
+                    "ReactRouter",
+                    "SQLite",
+                    "Dotenv",
+                    "Recharts"
+                ]
+            },
+            {
+                "title": "Portfolio",
+                "description": "This portfolio, which focuses on frontend development, with a particular emphasis on animations, design, and 3D elements.",
+                "github": "https://github.com",
+                "skills": [
+                    "JavaScript",
+                    "NextJS",
+                    "React",
+                    "FramerMotion",
+                    "Tailwind",
+                    "ReactThreeFiber",
+                    "ThreeJS",
+                    "IntersectionObserver"
+                ]
+            }
+        ],
+        "all": [
+            {
+                "title": "Portfolio",
+                "html_description": "<p>Dies ist meine Portfolio-Beschreibung</p>"
+            },
+            {
+                "title": "Blog",
+                "html_description": "<p>Dies ist meine Blog-Beschreibung</p>"
+            }
+        ]
+    }
+}
