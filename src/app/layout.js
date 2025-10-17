@@ -21,12 +21,15 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   metadataBase: new URL("https://mxrlin.dev"),
-  title: "Marlin Eichelmann | Software Engineer Portfolio",
-  description: "Official portfolio of Marlin Eichelmann (Mxrlin), Web Developer & Full Stack Engineer.",
+  title: "Marlin Eichelmann",
+  description: "Portfolio of Marlin Eichelmann (Mxrlin), Web Developer & Full Stack Engineer.",
   keywords: [
     "Marlin Eichelmann",
     "Mxrlin",
     "Portfolio",
+    "Java", 
+    "Spigot",
+    "Minecraft Developer",
     "Web Developer",
     "Software Engineer",
     "React",
@@ -36,7 +39,7 @@ export const metadata = {
   authors: [{ name: "Marlin Eichelmann", url: "https://mxrlin.dev" }],
   category: "Technology",
   openGraph: {
-    title: "Marlin Eichelmann | Portfolio",
+    title: "Marlin Eichelmann Portfolio",
     description: "Showcasing my work as a web developer and software engineer.",
     url: "https://mxrlin.dev",
     siteName: "mxrlin.dev",
@@ -45,7 +48,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Marlin Eichelmann | Portfolio",
+    title: "Marlin Eichelmann Portfolio",
     description: "Developer Portfolio of Marlin Eichelmann (Mxrlin)",
   },
   alternates: {
