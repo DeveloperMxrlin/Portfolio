@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mxrlin.dev/sitemap.xml
