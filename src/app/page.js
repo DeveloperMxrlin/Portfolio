@@ -42,7 +42,6 @@ export default function Page() {
     setCurrentIndex(index);
   };
 
-  // Zeige Popup beim ersten Laden auf Mobile
   useEffect(() => {
     if (isMobile) {
       setShowMobilePopup(true);
@@ -138,7 +137,6 @@ export default function Page() {
         />
       )}
 
-      {/* Mobile Hinweis Popup */}
       {isMobile && (
         <Popup isOpen={showMobilePopup} onClose={() => setShowMobilePopup(false)}>
         <div className="relative p-6">

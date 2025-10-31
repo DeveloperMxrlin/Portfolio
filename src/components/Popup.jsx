@@ -17,7 +17,7 @@ export default function Popup({ isOpen, onClose, children }) {
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Hintergrund Overlay */}
+          {/* Background Overlay */}
           <motion.div
             className="fixed inset-0 bg-black/50 z-40"
             initial={{ opacity: 0 }}
@@ -36,7 +36,7 @@ export default function Popup({ isOpen, onClose, children }) {
           >
             <div className="relative bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-6 max-w-lg w-full">
               
-              {/* ❌ Close Button */}
+              {/* Close Button */}
               <button
               type="button"
                 onClick={onClose}

@@ -33,7 +33,7 @@ const Showoff = forwardRef(function Showoff(_, ref) {
       ref={ref}
       className="min-h-screen flex flex-col items-center justify-start pt-8 md:pt-16 px-6 relative"
     >
-      {/* Titel + Button */}
+      {/* Title & Button */}
       <motion.div
         className="max-w-7xl w-full flex flex-col items-center"
         initial={{ opacity: 0, y: 50 }}

@@ -37,7 +37,6 @@ const SkillsComponent = forwardRef((props, ref) => {
 
   const renderSlider = (skills, direction, label, labelClass) => (
     <div className="relative w-full h-32 sm:h-40 overflow-hidden">
-      {/* kürzere Gradients auf Mobile */}
       <div className="absolute top-0 left-0 h-full w-32 sm:w-60 md:w-96 z-30 pointer-events-none bg-gradient-to-r from-zinc-950/100 via-zinc-950/0"></div>
       <div className="absolute top-0 right-0 h-full w-32 sm:w-60 md:w-96 z-30 pointer-events-none bg-gradient-to-l from-zinc-950/100 via-zinc-950/0"></div>
 

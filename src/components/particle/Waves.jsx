@@ -54,7 +54,7 @@ export default function Waves2D() {
                             opacity: newOpacity,
                         };
                     })
-                    .filter((w) => w.age < w.life) // Entferne alte Wellen
+                    .filter((w) => w.age < w.life) // remove old waves
             );
 
             raf = requestAnimationFrame(animate);
@@ -71,7 +71,7 @@ export default function Waves2D() {
             preserveAspectRatio="none"
         >
             {waves.map((wave) => {
-                const step = 5; // feinere Punkte für glattere Welle
+                const step = 5;
 
                 let path = "";
                 for (let x = 0; x <= wave.width; x += step) {

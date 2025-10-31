@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import Popup from "./Popup"; // ✅ Popup importieren
+import Popup from "./Popup";
 import { sendEmail } from "@/libraries/SendMail";
 
 function HoldButton({ name, company, email, message }) {
@@ -116,7 +116,6 @@ function HoldButton({ name, company, email, message }) {
                     setIsHover(false);
                 }}
             >
-                {/* Hover-Füllung */}
                 <div
                     className="absolute top-0 left-0 h-full bg-white z-0 pointer-events-none"
                     style={{
@@ -125,7 +124,6 @@ function HoldButton({ name, company, email, message }) {
                     }}
                 ></div>
 
-                {/* Hold-Füllung */}
                 {progress > 0 && (
                     <div
                         className="absolute top-0 left-0 h-full bg-white z-0"

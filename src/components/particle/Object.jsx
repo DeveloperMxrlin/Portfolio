@@ -9,13 +9,12 @@ const particleCount = 2000;
 function ParticleSphere() {
   const particlesRef = useRef(null);
 
-  // Partikelpositionen auf einer Sphere generieren
   const [positions] = useState(() => {
     const arr = new Float32Array(particleCount * 3);
     for (let i = 0; i < particleCount; i++) {
       const theta = Math.random() * 2 * Math.PI;
       const phi = Math.acos((Math.random() * 2) - 1);
-      const radius = 1; // Radius der Sphere
+      const radius = 1;
       const x = radius * Math.sin(phi) * Math.cos(theta);
       const y = radius * Math.sin(phi) * Math.sin(theta);
       const z = radius * Math.cos(phi);
@@ -25,7 +24,6 @@ function ParticleSphere() {
     }
     return arr;
   });
-
 
   // Animation
   useFrame(({ clock }) => {

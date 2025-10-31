@@ -26,7 +26,6 @@ export default function ScrollMouseHint({ currentIndex, totalSections, onClick }
           onClick={onClick}
         >
           {!isLast && (
-            // Maus mit animiertem Punkt
             <div className="w-6 h-10 rounded-full border-2 border-gray-400 flex justify-center items-start p-1">
               <motion.div
                 className="w-2 h-2 rounded-full bg-gray-400"

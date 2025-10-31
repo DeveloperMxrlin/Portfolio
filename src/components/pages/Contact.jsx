@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from "react";
+import React, { forwardRef, useState, useRef } from "react";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import Waves2D from "../particle/Waves";
@@ -12,11 +12,8 @@ const Contact = forwardRef((props, ref) => {
     const [message, setMessage] = useState("");
 
     const handleButtonClick = () => {
-        if (!formVisible) {
+        if (!formVisible) 
             setFormVisible(true);
-        } else {
-            window.location.href = "mailto:youremail@example.com";
-        }
     };
 
     // Mobile-only shortened email
@@ -29,10 +26,8 @@ const Contact = forwardRef((props, ref) => {
             id="contact"
             className="relative flex flex-col justify-between min-h-screen max-h-screen w-full text-gray-200"
         >
-            {/* Wellen */}
             <Waves2D />
 
-            {/* Oberer Bereich */}
             <div className="flex flex-col items-center justify-center flex-grow w-full bg-gradient-to-b from-transparent to-black px-4 text-center">
                 <motion.div
                     animate={{ y: formVisible ? -40 : 0 }}
@@ -76,7 +71,7 @@ const Contact = forwardRef((props, ref) => {
                         </motion.button>
                     )}
 
-                    {/* Kontaktformular */}
+                    {/* Contact form */}
                     <AnimatePresence>
                         {formVisible && (
                             <motion.form
@@ -86,7 +81,6 @@ const Contact = forwardRef((props, ref) => {
                                 transition={{ duration: 0.5 }}
                                 className="w-full flex flex-col gap-4 mt-4 max-w-3xl"
                             >
-                                {/* Zweispaltige Inputs: Your Name + Your Company */}
                                 <div className="flex flex-col md:flex-row gap-4">
                                     {["Your Name", "Your Company"].map((label, idx) => (
                                         <div key={idx} className="relative w-full">
@@ -150,7 +144,6 @@ const Contact = forwardRef((props, ref) => {
                                         className="relative text-gray-500 text-sm whitespace-nowrap group"
                                     >
                                         marlineichelmann@gmail.com
-                                        {/* Animierter Unterstrich */}
                                         <span className="absolute left-0 -bottom-1 h-[1px] w-0 bg-white transition-all duration-1000 group-hover:w-full"></span>
                                     </a>
                                     <HoldButton name={name} company={company} email={email} message={message} />
@@ -166,7 +159,7 @@ const Contact = forwardRef((props, ref) => {
                 <span className="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2025 Mxrlin</span>
                 <div className="flex space-x-6 text-2xl">
                     <a
-                        href="https://github.com/yourusername"
+                        href="https://github.com/DeveloperMxrlin"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-gray-400 transition-colors"
@@ -174,7 +167,7 @@ const Contact = forwardRef((props, ref) => {
                         <FaGithub />
                     </a>
                     <a
-                        href="https://linkedin.com/in/yourusername"
+                        href="linkedin.com/in/marlin-eichelmann-9b8b62379/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-gray-400 transition-colors"
@@ -182,7 +175,7 @@ const Contact = forwardRef((props, ref) => {
                         <FaLinkedin />
                     </a>
                     <a
-                        href="https://instagram.com/yourusername"
+                        href="https://www.instagram.com/mxrlin08"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="hover:text-gray-400 transition-colors"
