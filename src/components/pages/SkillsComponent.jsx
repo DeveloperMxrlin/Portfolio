@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 
 const SkillsComponent = forwardRef((props, ref) => {
   const languages = [Skills.JavaScript, Skills.Java, Skills.HTML, Skills.CSS, Skills.PostgreSQL, Skills.MySQL, Skills.SQLite];
-  const frameworks = [Skills.React, Skills.NextJS, Skills.Tailwind, Skills.NodeJS, Skills.Express, Skills.SpringBoot];
+  const frameworks = [Skills.React, Skills.NextJS, Skills.Tailwind, Skills.NodeJS, Skills.Express, Skills.SpringBoot, Skills.Spigot, Skills.Minecraft];
   const tools = [
     Skills.FramerMotion, Skills.ReactQuery, Skills.ReactRouter, Skills.ReactThreeFiber, Skills.ThreeJS,
     Skills.Recharts, Skills.Bcrypt, Skills.Dotenv, Skills.Cors, Skills.JJWT, Skills.Helmet, Skills.Joi,
-    Skills.JWT, Skills.QRCode, Skills.Speakeasy, Skills.Git, Skills.IntersectionObserver
+    Skills.JWT, Skills.QRCode, Skills.Speakeasy, Skills.Git, Skills.IntersectionObserver, Skills.Gson, Skills.ASM, Skills.OkHttp
   ];
 
   const renderSkills = (skills, keyPrefix) => (

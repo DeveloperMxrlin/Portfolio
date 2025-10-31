@@ -4,32 +4,22 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 import { HiDotsHorizontal } from "react-icons/hi";
 import { Skills } from '@/libraries/Skills';
+import { allProjects, showoffProjects } from '@/libraries/Projects';
 
 const Showoff = forwardRef(function Showoff(_, ref) {
 
-  const [projects, setProjects] = useState([]);
-  const [allProjects, setAllProjects] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const [selectedProject, setSelectedProject] = useState(allProjects[0]);
 
-  useEffect(() => {
-    fetch("/data.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setProjects(data.projects.showoff || []);
-        setAllProjects(data.projects.all || []);
-      });
-  }, []);
-
   const next = () => {
     setDirection(1);
-    setCurrentIndex((prev) => (prev + 1) % projects.length);
+    setCurrentIndex((prev) => (prev + 1) % showoffProjects.length);
   };
   const prev = () => {
     setDirection(-1);
-    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+    setCurrentIndex((prev) => (prev - 1 + showoffProjects.length) % showoffProjects.length);
   };
 
   const slideVariants = {
@@ -106,7 +96,7 @@ const Showoff = forwardRef(function Showoff(_, ref) {
               transition={{ duration: 0.5 }}
               className="grid grid-cols-3 gap-10"
             >
-              {projects.map((p, idx) => (
+              {showoffProjects.map((p, idx) => (
                 <ProjectCard key={p.title} project={p} index={idx} />
               ))}
             </motion.div>
@@ -147,19 +137,54 @@ const Showoff = forwardRef(function Showoff(_, ref) {
 
               {/* Content */}
               <motion.div
-                className="w-3/4 p-8 text-gray-100 overflow-y-auto scrollbar"
+                className="w-3/4 p-8 relative text-gray-100 overflow-y-auto scrollbar flex flex-col justify-between"
                 data-scrollable
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                <h3 className="text-2xl font-bold mb-4">{selectedProject?.title}</h3>
-                <div
-                  className="leading-relaxed text-gray-300"
-                  dangerouslySetInnerHTML={{ __html: selectedProject?.html_description || "" }}
-                />
+                <div className="overflow-y-auto h-full" data-scrollable>
+                  <h3 className="text-2xl font-bold mb-4">{selectedProject?.title}</h3>
+                  <div
+                    className="leading-relaxed text-gray-300"
+                    dangerouslySetInnerHTML={{ __html: selectedProject?.html_description || "" }}
+                  />
+                </div>
+
+                {/* Skills + GitHub Row */}
+                <div className="mt-6 flex items-center justify-end gap-6">
+                  {/* Skills */}
+                  <motion.div
+                    layout
+                    transition={{ type: "spring", stiffness: 250, damping: 25 }}
+                    className="flex flex-wrap gap-3 justify-end"
+                  >
+                    {selectedProject?.skills?.map((skill, i) => {
+                      const Icon = skill.icon;
+                      return (
+                        <a
+                          key={i}
+                          href={skill.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-300 hover:text-white transition"
+                          title={skill.name}
+                        >
+                          <Icon className="text-xl w-6 h-6" />
+                        </a>
+                      );
+                    })}
+                  </motion.div>
+
+                  {/* GitHub Button with expanding hover */}
+                  {selectedProject?.github && (
+                    <GitHubButton url={selectedProject.github} />
+                  )}
+                </div>
               </motion.div>
+
+
             </motion.div>
           )}
         </AnimatePresence>
@@ -184,7 +209,7 @@ const Showoff = forwardRef(function Showoff(_, ref) {
             transition={{ duration: 0.5 }}
             className="absolute w-full"
           >
-            <ProjectCard project={projects[currentIndex]} />
+            <ProjectCard project={showoffProjects[currentIndex]} />
           </motion.div>
         </AnimatePresence>
       </motion.div>
@@ -289,3 +314,42 @@ function ProjectCard({ project, index }) {
     </motion.div>
   );
 }
+
+function GitHubButton({ url }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      animate={{
+        width: isHovered ? "12rem" : "3.25rem",
+      }}
+      transition={{ type: "spring", stiffness: 200, damping: 20 }}
+      className="flex items-center justify-start h-12 rounded-full bg-white/10 text-gray-200 border border-white/20 hover:bg-white/20 transition-colors duration-300 overflow-hidden cursor-pointer"
+      layout
+    >
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-2 pl-3 pr-4 w-full h-full"
+        title="GitHub Repository"
+      >
+        <FaGithub className="w-6 h-6 text-gray-200 flex-shrink-0" />
+
+        <motion.span
+          animate={{
+            opacity: isHovered ? 1 : 0,
+            x: isHovered ? 0 : 20,
+          }}
+          transition={{ duration: 0.3 }}
+          className="whitespace-nowrap text-sm font-medium text-gray-100"
+        >
+          View on GitHub
+        </motion.span>
+      </a>
+    </motion.div>
+  );
+}
+

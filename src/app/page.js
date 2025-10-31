@@ -101,10 +101,10 @@ export default function Page() {
 
     const handleTouchCancel = handleTouchEnd;
 
-    container.addEventListener('wheel', handleWheel, { passive: true });
-    container.addEventListener('touchstart', handleTouchStart, { passive: true });
-    container.addEventListener('touchend', handleTouchEnd, { passive: true });
-    container.addEventListener('touchcancel', handleTouchCancel, { passive: true });
+    container.addEventListener('wheel', handleWheel, { passive: false });
+    container.addEventListener('touchstart', handleTouchStart, { passive: false });
+    container.addEventListener('touchend', handleTouchEnd, { passive: false });
+    container.addEventListener('touchcancel', handleTouchCancel, { passive: false });
 
     return () => {
       container.removeEventListener('wheel', handleWheel);

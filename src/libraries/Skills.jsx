@@ -16,17 +16,23 @@ import {
   SiDotenv,
   SiJsonwebtokens,
   SiReactquery,
-  SiReactrouter 
+  SiReactrouter,
+  SiSpigotmc
 } from "react-icons/si";
 
 import { DiJava } from "react-icons/di";
-import { MdQuestionMark } from "react-icons/md";
+import { 
+  MdQuestionMark,
+  MdHttp
+ } from "react-icons/md";
 import { 
   TbHelmet, 
   TbQrcode, 
-  TbBrandThreejs   
+  TbBrandThreejs,
+  TbBrandMinecraft
 } from "react-icons/tb";
 import { RiBeerFill } from "react-icons/ri";
+import { BsFiletypeJson } from "react-icons/bs";
 
 export const Skills = {
   JavaScript: { name: "JavaScript",     icon: SiJavascript, url: "https://www.javascript.com/" },
@@ -59,4 +65,9 @@ export const Skills = {
   ReactThreeFiber: { name: "React Three Fiber", icon: SiReact, url: "https://docs.pmnd.rs/react-three-fiber/getting-started/introduction" },
   ThreeJS: { name: "Three.js",          icon: TbBrandThreejs, url: "https://threejs.org/" },
   IntersectionObserver: { name: "Intersection Observer", icon: MdQuestionMark, url: "https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API" },
+  Spigot: { name: "Spigot",             icon: SiSpigotmc, url: "https://www.spigotmc.org/" },
+  Gson: { name: "Gson",                 icon: BsFiletypeJson, url: "https://en.wikipedia.org/wiki/Gson"},
+  ASM: { name: "ASM",                   icon: MdQuestionMark, url: "https://asm.ow2.io/" },
+  OkHttp: { name: "OkHttp",             icon: MdHttp, url: "https://square.github.io/okhttp/" },
+  Minecraft: { name: "Minecraft",       icon: TbBrandMinecraft, url: "https://www.minecraft.net/" }
 };
