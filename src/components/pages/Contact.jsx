@@ -12,7 +12,7 @@ const Contact = forwardRef((props, ref) => {
     const [message, setMessage] = useState("");
 
     const handleButtonClick = () => {
-        if (!formVisible) 
+        if (!formVisible)
             setFormVisible(true);
     };
 
@@ -34,12 +34,16 @@ const Contact = forwardRef((props, ref) => {
                     transition={{ duration: 0.5 }}
                     className="flex flex-col items-center w-full max-w-2xl"
                 >
-                    <h2 className="text-3xl md:text-4xl font-semibold mb-3">
-                        Have a project in mind? Let&apos;s talk.
-                    </h2>
-                    <p className="text-gray-400 mb-6 hidden md:block">
-                        I usually respond within 24 hours.
-                    </p>
+                    {!(formVisible && window.innerWidth < 768) && (
+                        <>
+                            <h2 className="text-3xl md:text-4xl font-semibold mb-3">
+                                Have a project in mind? Let&apos;s talk.
+                            </h2>
+                            <p className="text-gray-400 mb-6 hidden md:block">
+                                I usually respond within 24 hours.
+                            </p>
+                        </>
+                    )}
 
                     {/* Button */}
                     {!formVisible && (
@@ -174,19 +178,10 @@ const Contact = forwardRef((props, ref) => {
                     >
                         <FaLinkedin />
                     </a>
-                    <a
-                        href="https://www.instagram.com/mxrlin08"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-gray-400 transition-colors"
-                    >
-                        <FaInstagram />
-                    </a>
                 </div>
             </footer>
         </section>
     );
 });
 
-Contact.displayName = "Contact";
 export default Contact;

@@ -7,7 +7,12 @@ function HoldButton({ name, company, email, message }) {
     const [isHover, setIsHover] = useState(false);
     const [popupMsg, setPopupMsg] = useState(null);
     const [isPopupOpen, setPopupOpen] = useState(false);
+    const [isSending, setIsSending] = useState(false);
     const intervalRef = useRef(null);
+
+    const isTouchDevice = () => {
+        return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    };
 
     const openPopup = (content) => {
         setPopupMsg(content);
@@ -30,6 +35,30 @@ function HoldButton({ name, company, email, message }) {
 
     const isValidEmail = (email) => {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+
+    const sendMail = () => {
+        if(isSending) return;
+        setIsSending(true);
+        sendEmail({ name, company, email, message })
+                        .then(() => {
+                            openPopup(
+                                <div className="text-start">
+                                    <h2 className="text-xl font-semibold text-green-500">Message sent!</h2>
+                                    <p className="text-gray-300 mt-2">Thanks for reaching out. I'll get back to you soon.</p>
+                                </div>
+                            );
+                            markEmailSent();
+                        })
+                        .catch(() => openPopup(
+                            <div className="text-start">
+                                <h2 className="text-xl font-semibold text-red-500">Message couldn't be sent.</h2>
+                                <p className="text-gray-300 mt-2">Please try again later or try contacting me manually via email.</p>
+                            </div>
+                        ))
+                        .finally(() => {
+                            setIsSending(false);
+                        });
     };
 
     const startHold = () => {
@@ -64,6 +93,10 @@ function HoldButton({ name, company, email, message }) {
             return;
         }
 
+        if(isTouchDevice()) {
+            sendMail();
+            return;
+        }
 
         if (intervalRef.current) return;
         intervalRef.current = setInterval(() => {
@@ -72,23 +105,7 @@ function HoldButton({ name, company, email, message }) {
                     clearInterval(intervalRef.current);
                     intervalRef.current = null;
 
-                    sendEmail({ name, company, email, message })
-                        .then(() => {
-                            openPopup(
-                                <div className="text-start">
-                                    <h2 className="text-xl font-semibold text-green-500">Message sent!</h2>
-                                    <p className="text-gray-300 mt-2">Thanks for reaching out. I'll get back to you soon.</p>
-                                </div>
-                            );
-                            markEmailSent();
-                        })
-                        .catch(() => openPopup(
-                            <div className="text-start">
-                                <h2 className="text-xl font-semibold text-red-500">Message couldn't be sent.</h2>
-                                <p className="text-gray-300 mt-2">Please try again later or try contacting me manually via email.</p>
-                            </div>
-                        ));
-
+                    sendMail();
                     return maxWidth - hoverWidth;
                 }
                 return prev + 1;
